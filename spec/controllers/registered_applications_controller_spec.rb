@@ -3,28 +3,40 @@ require 'rails_helper'
 RSpec.describe RegisteredApplicationsController, type: :controller do
 
   describe "GET#index" do
+    let(:my_user) { create(:user) }
+    before do
+      sign_in(my_user)
+    end
+
     it "returns http success" do
-      user = create(:user)
-      sign_in(user)
       get :index
       expect(response).to have_http_status(:success)
     end
 
     it "assigns the users applications to @applications" do
-      user = create(:user)
-      sign_in(user)
-      application_1 = create(:application, user: user)
+      application_1 = create(:application, user: my_user)
       get :index
-      expect(assigns(:applications)).to eq(user.applications)
+      expect(assigns(:applications)).to eq(my_user.applications)
     end
   end
 
-  # describe "GET#create" do
-  #   it "returns http success" do
-  #     get :create
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET#create" do
+    let(:my_user) { create(:user) }
+    before do
+      sign_in(my_user)
+    end
+
+    it "registers a new application" do
+      expect(my_user.applications.count).to eq(0)
+      get :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
+      expect(my_user.applications.count).to eq(1)
+    end
+
+    it "redirects to #index" do
+      get :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
+      expect(response).to redirect_to(registered_applications_path)
+    end
+  end
   #
   # describe "GET#show" do
   #   it "returns http success" do
