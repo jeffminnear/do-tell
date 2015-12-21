@@ -8,3 +8,5 @@
     <%= render partial: 'registered_applications/application', locals: { application: application } %>
   <% end %>
 <% end %>
+
+<%= link_to "New Application", new_registered_application_path, class: "btn btn-success" %>
