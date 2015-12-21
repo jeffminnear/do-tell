@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   resources :registered_applications
 
-  get 'registered_applications/destroy'
-
   devise_for :users
 
   get '/about', to: 'welcome#about'
