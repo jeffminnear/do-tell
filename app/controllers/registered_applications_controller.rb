@@ -1,5 +1,6 @@
 class RegisteredApplicationsController < ApplicationController
   def index
+    @applications = current_user.applications
   end
 
   def show
