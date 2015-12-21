@@ -48,6 +48,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'shoulda'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
@@ -58,4 +60,8 @@ group :development do
   gem 'spring'
 
   gem 'mailcatcher'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
