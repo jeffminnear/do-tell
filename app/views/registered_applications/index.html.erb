@@ -1,4 +1,10 @@
 <% @page_title = "Registered Applications" %>
 <h2>Index Page</h2>
 
-<p>You have not registered any applications yet.</p>
+<% if @applications.empty? %>
+  <p>You have not registered any applications yet.</p>
+<% else %>
+  <% @applications.each do |application| %>
+    <%= render partial: 'registered_applications/application', locals: { application: application } %>
+  <% end %>
+<% end %>
