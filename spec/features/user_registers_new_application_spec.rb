@@ -4,14 +4,9 @@ RSpec.feature "User registers new application", js: true do
   scenario "successfully" do
     user = create(:user)
 
-    visit new_user_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-
-    click_button "Log in"
+    login_user(user)
 
     expect(page).to have_title("Registered Applications")
-    expect(page).to have_content("New Application")
 
     click_link "New Application"
 

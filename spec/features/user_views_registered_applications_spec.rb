@@ -4,12 +4,7 @@ RSpec.feature 'User views registered applications', js: true do
   scenario "successfully with no applications" do
     user = create(:user)
 
-    visit '/users/sign_in'
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-
-    click_button "Log in"
+    login_user(user)
 
     expect(page).to have_title("Registered Applications")
     expect(page).to have_content("You have not registered any applications yet.")
@@ -19,12 +14,7 @@ RSpec.feature 'User views registered applications', js: true do
     user = create(:user)
     applications = create_list(:application, 3, user: user)
 
-    visit new_user_session_path
-
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-
-    click_button "Log in"
+    login_user(user)
 
     expect(page).to have_title("Registered Applications")
     expect(page).not_to have_content("You have not registered any applications yet.")
