@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :registered_applications
+  resources :registered_applications, only: [:index, :show, :new, :create, :destroy], as: :applications
 
   devise_for :users
 

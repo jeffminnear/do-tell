@@ -28,13 +28,13 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
 
     it "registers a new application" do
       expect(my_user.applications.count).to eq(0)
-      get :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
+      post :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
       expect(my_user.applications.count).to eq(1)
     end
 
     it "redirects to #index" do
-      get :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
-      expect(response).to redirect_to(registered_applications_path)
+      post :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
+      expect(response).to redirect_to(applications_path)
     end
   end
   #

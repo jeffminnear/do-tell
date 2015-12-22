@@ -1,6 +1,4 @@
-<% action = application.new_record? ? "create" : "update" %>
-
-<%= form_for application, url: { action: action } do |f| %>
+<%= form_for application do |f| %>
   <% if application.errors.any? %>
     <div class="alert alert-danger">
       <h4><%= pluralize(application.errors.count, "error") %>.</h4>

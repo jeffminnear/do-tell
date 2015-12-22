@@ -15,7 +15,7 @@ class RegisteredApplicationsController < ApplicationController
 
     if @application.save
       flash[:notice] = "Your new application has been registered."
-      redirect_to registered_applications_path
+      redirect_to applications_path
     else
       flash[:error] = "There was an error registering your application. Please try again."
       render :new
