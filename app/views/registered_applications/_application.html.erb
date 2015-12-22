@@ -1,7 +1,7 @@
 <div class="media">
   <div class="media-body">
     <h4 class="media-heading">
-      <%= application.name %>, <small><%= application.url %></small>
+      <%= link_to application.name, application_path(application) %> <span class='very-small'>(<%= application.url %>)</span>
     </h4>
   </div>
 </div>

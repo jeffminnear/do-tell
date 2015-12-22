@@ -4,6 +4,11 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def show
+    begin
+      @application = current_user.applications.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      @application = nil
+    end
   end
 
   def new

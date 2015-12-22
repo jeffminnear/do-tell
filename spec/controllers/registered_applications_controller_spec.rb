@@ -37,14 +37,38 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
       expect(response).to redirect_to(applications_path)
     end
   end
-  #
-  # describe "GET#show" do
-  #   it "returns http success" do
-  #     get :show
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-  #
+
+  describe "GET#show" do
+    let(:user) { create(:user) }
+    before do
+      sign_in(user)
+    end
+
+    context "user viewing an application they own" do
+      let(:application) { create(:application, user: user) }
+
+      it "returns http success" do
+        get :show, id: application.id
+        expect(response).to have_http_status(:success)
+      end
+
+      it "assigns the correct object to @application" do
+        get :show, id: application.id
+        expect(assigns(:application)).to eq(application)
+      end
+    end
+
+    context "user viewing an application they don't own" do
+      let(:other_user) { create(:user) }
+      let(:other_user_owned_application) { create(:application, user: other_user) }
+
+      it "does not assign @application" do
+        get :show, id: other_user_owned_application.id
+        expect(assigns(:application)).to be_nil
+      end
+    end
+  end
+
   # describe "GET#update" do
   #   it "returns http success" do
   #     get :update
