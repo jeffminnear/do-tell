@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe RegisteredApplicationsController, type: :controller do
 
   describe "GET#index" do
-    let(:my_user) { create(:user) }
+    let(:user) { create(:user) }
     before do
-      sign_in(my_user)
+      sign_in(user)
     end
 
     it "returns http success" do
@@ -14,22 +14,22 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
     end
 
     it "assigns the users applications to @applications" do
-      application_1 = create(:application, user: my_user)
+      application_1 = create(:application, user: user)
       get :index
-      expect(assigns(:applications)).to eq(my_user.applications)
+      expect(assigns(:applications)).to eq(user.applications)
     end
   end
 
   describe "GET#create" do
-    let(:my_user) { create(:user) }
+    let(:user) { create(:user) }
     before do
-      sign_in(my_user)
+      sign_in(user)
     end
 
     it "registers a new application" do
-      expect(my_user.applications.count).to eq(0)
+      expect(user.applications.count).to eq(0)
       post :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
-      expect(my_user.applications.count).to eq(1)
+      expect(user.applications.count).to eq(1)
     end
 
     it "redirects to #index" do
