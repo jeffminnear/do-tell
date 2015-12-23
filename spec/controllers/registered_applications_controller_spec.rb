@@ -20,7 +20,7 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
     end
   end
 
-  describe "GET#create" do
+  describe "POST#create" do
     let(:user) { create(:user) }
     before do
       sign_in(user)
@@ -69,16 +69,16 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
     end
   end
 
-  # describe "GET#update" do
+  # describe "PUT#update" do
   #   it "returns http success" do
-  #     get :update
+  #     put :update
   #     expect(response).to have_http_status(:success)
   #   end
   # end
   #
-  # describe "GET#destroy" do
+  # describe "DELETE#destroy" do
   #   it "returns http success" do
-  #     get :destroy
+  #     delete :destroy
   #     expect(response).to have_http_status(:success)
   #   end
   # end
