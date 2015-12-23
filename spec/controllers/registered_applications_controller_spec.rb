@@ -76,11 +76,33 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
   #   end
   # end
   #
-  # describe "DELETE#destroy" do
-  #   it "returns http success" do
-  #     delete :destroy
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "DELETE#destroy" do
+    let(:user) { create(:user) }
+
+    before do
+      sign_in(user)
+    end
+
+    it "redirects" do
+      application = create(:application, user: user)
+      delete :destroy, id: application.id
+      expect(response).to redirect_to applications_path
+    end
+
+    it "deletes the registered application" do
+      application = create(:application, user: user)
+      expect(user.applications.count).to eq(1)
+      delete :destroy, id: application.id
+      expect(user.applications.count).to eq(0)
+    end
+
+    it "returns error if delete fails" do
+      expect_any_instance_of(Application).to receive(:destroy).and_return(false)
+      application = create(:application, user: user)
+      delete :destroy, id: application.id
+      expect(flash[:error]).to eq("There was an error deleting the application. Please try again.")
+      expect(response).to render_template(:show)
+    end
+  end
 
 end

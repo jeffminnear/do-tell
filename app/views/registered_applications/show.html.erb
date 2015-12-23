@@ -1,7 +1,9 @@
 <% if !@application %>
   <h1>This Application does not exist, or you do not have permission to view it.</h1>
 <% else %>
+  <% @page_title = @application.name %>
   <h1><%= @application.name %></h1>
   <p><%= @application.url %></p>
   <!-- additional content will go here... -->
+  <%= link_to "Delete Registered Application", application_path(@application), method: :delete %>
 <% end %>

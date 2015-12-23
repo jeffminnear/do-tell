@@ -28,6 +28,15 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def destroy
+    @application = current_user.applications.find(params[:id])
+
+    if @application.destroy
+      flash[:notice] = "Application deleted successfully."
+      redirect_to applications_path
+    else
+      flash[:error] = "There was an error deleting the application. Please try again."
+      render :show
+    end
   end
 
 
