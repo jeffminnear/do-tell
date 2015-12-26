@@ -1,10 +1,7 @@
-include Fake
-
 FactoryGirl.define do
-  app_name = Fake.application_name
   factory :application do
-    name  app_name
-    url   { Fake.url(app_name) }
+    sequence(:name)   { |n| "app#{n}" }
+    sequence(:url)    { |n| "https://app#{n}@test.com" }
     user
   end
 end
