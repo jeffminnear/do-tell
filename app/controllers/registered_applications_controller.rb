@@ -9,6 +9,10 @@ class RegisteredApplicationsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       @application = nil
     end
+
+    if @application
+      @events = @application.events.group_by(&:name)
+    end
   end
 
   def new

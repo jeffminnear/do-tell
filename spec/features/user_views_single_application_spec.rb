@@ -4,6 +4,7 @@ RSpec.feature 'User vews a single application', js: true do
   scenario 'user views an application they own' do
     user = create(:user)
     application = create(:application, user: user)
+    event = create(:event, application: application)
 
     login_user(user)
 
@@ -11,6 +12,7 @@ RSpec.feature 'User vews a single application', js: true do
 
     expect(page).to have_content(application.name)
     expect(page).to have_content(application.url)
+    expect(page).to have_content("#{event.name}: ")
   end
 
   scenario 'user views an application they do not own' do

@@ -4,6 +4,14 @@
   <% @page_title = @application.name %>
   <h1><%= @application.name %></h1>
   <p><%= @application.url %></p>
+  <br>
+  <% if @events %>
+    <% list_events(@events).each do |event| %>
+      <%= event %><br>
+    <% end %>
+  <% else %>
+    <h3>This application has no events associated with it.</h3>
+  <% end %>
   <!-- additional content will go here... -->
   <%= link_to "Delete Registered Application", application_path(@application), class: 'btn btn-danger', method: :delete %>
 <% end %>
