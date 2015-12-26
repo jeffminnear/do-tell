@@ -1,7 +1,9 @@
+include Fake
+
 FactoryGirl.define do
   factory :event do
-    name "MyString"
-application nil
+    name        { Fake.event }
+    application
   end
 
 end
