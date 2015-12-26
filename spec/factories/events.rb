@@ -2,7 +2,7 @@ include Fake
 
 FactoryGirl.define do
   factory :event do
-    name        { Fake.event }
+    name        { Fake.event_name }
     application
   end
 
