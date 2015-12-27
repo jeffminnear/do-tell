@@ -8,7 +8,7 @@ module Fake
   end
 
   def self.url(domain = 'example')
-    Faker::Internet.url(domain)
+    Faker::Internet.url(domain.gsub(/\s+/, '')) # prevent whitespace in url
   end
 
   def self.event_name
