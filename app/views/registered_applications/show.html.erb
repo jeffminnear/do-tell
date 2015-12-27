@@ -5,7 +5,7 @@
   <h1><%= @application.name %></h1>
   <p><%= @application.url %></p>
   <br>
-  <% if @events %>
+  <% if !@events.empty? %>
     <% list_events(@events).each do |event| %>
       <%= event %><br>
     <% end %>
