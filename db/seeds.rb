@@ -1,5 +1,3 @@
-include Fake
-
 # Create users
 20.times do
   user = User.create( email: Fake.email,

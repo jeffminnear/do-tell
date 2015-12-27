@@ -1,17 +1,17 @@
 module Fake
-  def email
+  def self.email
     Faker::Internet.safe_email
   end
 
-  def application_name
+  def self.application_name
     Faker::App.name
   end
 
-  def url(domain = 'example')
+  def self.url(domain = 'example')
     Faker::Internet.url(domain)
   end
 
-  def event_name
+  def self.event_name
     "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}"
   end
 end
