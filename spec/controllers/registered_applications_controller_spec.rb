@@ -36,6 +36,20 @@ RSpec.describe RegisteredApplicationsController, type: :controller do
       post :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
       expect(response).to redirect_to(applications_path)
     end
+
+    it "will not register an application with a duplicate name" do
+      post :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
+
+      post :create, application: { name: "MyNewApp", url: "http://www.myotherapp.com" }
+      expect(flash[:error]).to eq("There was an error registering your application. Please try again.")
+    end
+
+    it "will not register an application with a duplicate url" do
+      post :create, application: { name: "MyNewApp", url: "http://www.mynewapp.com" }
+
+      post :create, application: { name: "MyOtherApp", url: "http://www.mynewapp.com" }
+      expect(flash[:error]).to eq("There was an error registering your application. Please try again.")      
+    end
   end
 
   describe "GET#show" do
