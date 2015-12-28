@@ -5,9 +5,9 @@
   <h1><%= @application.name %></h1>
   <p><%= @application.url %></p>
   <br>
-  <% if !@events.empty? %>
-    <% list_events(@events).each do |event| %>
-      <%= event %><br>
+  <% if @event_counts.any? %>
+    <% @event_counts.each do |event_name, count| %>
+      <%= event_name %>: <%= count %><br>
     <% end %>
   <% else %>
     <h3>This application has no events associated with it.</h3>

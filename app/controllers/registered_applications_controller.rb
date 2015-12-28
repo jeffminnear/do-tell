@@ -11,7 +11,7 @@ class RegisteredApplicationsController < ApplicationController
     end
 
     if @application
-      @events = @application.events.group_by(&:name)
+      @event_counts = @application.events.group(:name).count
     end
   end
 
