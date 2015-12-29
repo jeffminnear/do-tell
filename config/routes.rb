@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :api, defaults: { format: :json } do
+    resources :events, only: [:create]
+  end
+
   resources :registered_applications,
             only: [:index, :show, :new, :create, :destroy],
             as: :applications
