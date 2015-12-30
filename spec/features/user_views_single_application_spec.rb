@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'User vews a single application', js: true do
+RSpec.feature 'User views a single application', js: true do
   scenario 'user views an application they own' do
     user = create(:user)
     application = create(:application, user: user)
@@ -12,7 +12,7 @@ RSpec.feature 'User vews a single application', js: true do
 
     expect(page).to have_content(application.name)
     expect(page).to have_content(application.url)
-    expect(page).to have_content("#{event.name}: ")
+    expect(page).to have_content('Loading...')
   end
 
   scenario 'user views an application they do not own' do
