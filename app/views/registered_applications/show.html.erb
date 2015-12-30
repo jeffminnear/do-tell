@@ -10,7 +10,7 @@
   <br>
   <% if @event_counts.any? %>
     <%= pie_chart @application.events.group(:name).count %>
-    <%= line_chart @application.events.group_by_day(:created_at).count %>
+    <%#= line_chart @application.events.group_by_day(:created_at).count %>
   <% else %>
     <h3>This application has no events associated with it.</h3>
   <% end %>
