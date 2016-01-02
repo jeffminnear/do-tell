@@ -1,9 +1,9 @@
 # Create users
 20.times do
   user = User.create( email: Fake.email,
-                      password: "helloworld"
+                      password: "helloworld",
+                      confirmed_at: Time.zone.now
   )
-  user.confirm
 end
 users = User.all
 
