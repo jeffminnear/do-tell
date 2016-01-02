@@ -16,3 +16,5 @@ var doTell = {};
     request.send(JSON.stringify(event));
   }
 ```
+
+Then call `doTell.report("<NAME_OF_THE_EVENT>")` whenever an event you want to track is triggered.
