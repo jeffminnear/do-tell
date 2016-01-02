@@ -12,7 +12,9 @@ RSpec.feature 'User views a single application', js: true do
 
     expect(page).to have_content(application.name)
     expect(page).to have_content(application.url)
-    expect(page).to have_content('Loading...')
+
+    page.driver.browser.navigate.refresh
+    expect(page).to have_content(event.name)
   end
 
   scenario 'user views an application they do not own' do
