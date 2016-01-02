@@ -4,7 +4,7 @@
 <% if !@application %>
   <h1>This Application does not exist, or you do not have permission to view it.</h1>
 <% else %>
-  <% @page_title = @application.name %>
+  <% @page_title = "#{@application.name} - DoTell" %>
   <h1><%= @application.name %></h1>
   <p><%= @application.url %></p>
   <br>
