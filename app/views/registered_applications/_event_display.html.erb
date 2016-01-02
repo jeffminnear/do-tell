@@ -6,13 +6,14 @@
           <th>Event</th>
           <th>Count</th>
         </tr>
-        <% i = 0 %>
+        <% i = 1 %>
         <% event_counts.each do |event_name, count| %>
-          <tr id="event-<%= i %>" >
+          <tr style="background-color:<%= EventHelper.select_color(i) %>" >
             <td><%= event_name %></td>
             <td><%= count %></td>
           </tr>
           <% i += 1 %>
+          <% i = 1 if i > 31 %>
         <% end %>
       </table>
     </div>
@@ -25,6 +26,6 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%#= line_chart @application.events.group_by_day(:created_at).count %>
+    <%= line_chart @application.events.group_by_day(:created_at).count %>
   </div>
 </div>
