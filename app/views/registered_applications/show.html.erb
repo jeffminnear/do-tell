@@ -9,13 +9,12 @@
   <p><%= @application.url %></p>
   <br>
   <% if @event_counts.any? %>
-    <%= pie_chart @application.events.group(:name).count %>
-    <%#= line_chart @application.events.group_by_day(:created_at).count %>
+    <%= render partial: 'event_display', locals: { event_counts: @event_counts } %>
   <% else %>
     <h3>This application has no events associated with it.</h3>
   <% end %>
 
   <!-- additional content will go here... -->
 
-  <%= link_to "Delete Registered Application", application_path(@application), class: 'btn btn-danger', method: :delete %>
+  <%= link_to "Delete Registered Application", application_path(@application), class: 'btn btn-danger', method: :delete, data: { confirm: "Are you sure you want to permanently delete this application?" } %>
 <% end %>
