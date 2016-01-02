@@ -14,4 +14,8 @@ module Fake
   def self.event_name
     "#{Faker::Hacker.ingverb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}"
   end
+
+  def self.time(days=30)
+    Faker::Time.backward(days)
+  end
 end
