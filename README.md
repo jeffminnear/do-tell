@@ -1,3 +1,18 @@
 ## DoTell
 
 DoTell is an analytics service and reporting tool to track events on websites.
+
+
+After registering your application, add this JavaScript snippet to your site to connect it to DoTell.
+
+```
+var doTell = {};
+  doTell.report = function(eventName){
+    var event = {event: { name: eventName}};
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "https://do-tell-sir.herokuapp.com/api/events", true);
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.send(JSON.stringify(event));
+  }
+```
