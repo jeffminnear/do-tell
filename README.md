@@ -2,6 +2,7 @@
 
 DoTell is an analytics service and reporting tool to track events on websites.
 
+![Alt text](https://github.com/jeffminnear/do-tell/raw/master/app/assets/images/do-tell-faker-1.png "example")
 
 After registering your application, add this JavaScript snippet to your site to connect it to DoTell.
 
