@@ -11,9 +11,9 @@ RSpec.feature 'User attempts to delete a registered application', js: true do
 
     expect(page).to have_title(application.name)
 
-    click_link "Delete Registered Application"
-
-    page.driver.browser.switch_to.alert.accept
+    accept_alert('Are you sure you want to permanently delete this application?') do
+      click_link "Delete Registered Application"
+    end
 
     expect(page).to have_content("You have not registered any applications yet.")
     expect(page).to have_css('.flash', text: 'Application deleted successfully.')
@@ -29,9 +29,9 @@ RSpec.feature 'User attempts to delete a registered application', js: true do
 
     expect(page).to have_title(application.name)
 
-    click_link "Delete Registered Application"
-
-    page.driver.browser.switch_to.alert.dismiss
+    dismiss_confirm('Are you sure you want to permanently delete this application?') do
+      click_link "Delete Registered Application"
+    end
 
     expect(page).to have_content(application.name)
   end
