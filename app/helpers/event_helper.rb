@@ -1,5 +1,5 @@
 module EventHelper
-  def self.select_color(index=0)
+  def select_color(index=0)
     colors = ['#424242', '#3366CC', '#DC3912', '#FF9900',
               '#109618', '#990099', '#0099C6', '#DD4477',
               '#66AA00', '#B82E2E', '#316395', '#994499',

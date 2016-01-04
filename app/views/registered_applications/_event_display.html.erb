@@ -8,7 +8,7 @@
         </tr>
         <% i = 1 %>
         <% event_counts.each do |event_name, count| %>
-          <tr style="background-color:<%= EventHelper.select_color(i) %>" >
+          <tr style="background-color:<%= select_color(i) %>" >
             <td><%= event_name %></td>
             <td><%= count %></td>
           </tr>
