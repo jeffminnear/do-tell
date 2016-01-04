@@ -6,14 +6,11 @@
           <th>Event</th>
           <th>Count</th>
         </tr>
-        <% i = 1 %>
-        <% event_counts.each do |event_name, count| %>
-          <tr style="background-color:<%= select_color(i) %>" >
+        <% event_counts.each_with_index do |(event_name, count), i| %>
+          <tr style="background-color:<%= select_color(i + 1) %>" >
             <td><%= event_name %></td>
             <td><%= count %></td>
           </tr>
-          <% i += 1 %>
-          <% i = 1 if i > 31 %>
         <% end %>
       </table>
     </div>
